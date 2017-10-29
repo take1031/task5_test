@@ -1,0 +1,63 @@
+<!-- 最低限のUIレベル -->
+<style>
+  .form {
+    width: 600px;
+    margin: 0 auto;
+  }
+  .form h1 {
+    text-align: center;
+    font-weight: normal;
+  }
+  .form .button {
+    margin: 20px auto 0;
+    display: block;
+    width: 200px;
+    background-color: #8888bb;
+    line-height: 44px;
+    text-align: center;
+    font-size: 22px;
+    border-radius: 6px;
+    appearance: none;
+    border: none;
+    color: #fff;
+  }
+  .form input[type="text"],
+  .form input[type="email"],
+  .form input[type="password"] {
+    width: 100%;
+    border-radius: 4px;
+    line-height: 32px;
+    border: 1px solid #ccc;
+    padding: 0 15px;
+  }
+</style>
+<div class="form">
+  <h1>新規会員登録</h1>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div>
+      <!-- 
+        これを追加してあれば、既存のものでもok
+      <div class="field">
+        <%= f.label :nickname %><br />
+        <%= f.text_field :nickname %>
+      </div>
+      -->
+
+      <p>ニックネーム</p>
+      <%= f.text_field :nickname, placeholder: "半角英数字 例) taroutanaka" %>
+    </div>
+    <div>
+      <p>メールアドレス</p>
+      <%= f.email_field :email, placeholder: "例) tanaka.tarou@email.com" %>
+    </div>
+    <div>
+      <p>パスワード</p>
+      <%= f.password_field :password, placeholder: '8文字以上、半角英数字で入力してください' %>
+    </div>
+    <div>
+      <p>パスワード(再確認)</p>
+      <%= f.password_field :password_confirmation, placeholder: '8文字以上、半角英数字で入力してください' %>
+    </div>
+    <%= f.submit "Sign up", class: "button" %>
+  <% end %>
+</div>
