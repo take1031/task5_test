@@ -10,7 +10,7 @@
 
   <body>
   	<% if user_signed_in? %>
-      Logged in as <%= current_user.email %>
+      <%= current_user.nickname %>　としてログインしています。
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %> |

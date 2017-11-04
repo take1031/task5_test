@@ -63,4 +63,7 @@ gem 'kaminari'
 
 gem 'acts-as-taggable-on'
 
+gem 'rails-i18n'
+
+gem 'devise-i18n'
 

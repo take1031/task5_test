@@ -44,7 +44,7 @@
       -->
 
       <p>ニックネーム</p>
-      <%= f.text_field :nickname, placeholder: "半角英数字 例) taroutanaka" %>
+      <%= f.text_field :nickname, placeholder: "" %>
     </div>
     <div>
       <p>メールアドレス</p>
@@ -58,6 +58,6 @@
       <p>パスワード(再確認)</p>
       <%= f.password_field :password_confirmation, placeholder: '8文字以上、半角英数字で入力してください' %>
     </div>
-    <%= f.submit "Sign up", class: "button" %>
+    <%= f.submit "これで登録！", class: "button" %>
   <% end %>
 </div>

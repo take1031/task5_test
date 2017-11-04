@@ -1,21 +1,48 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
-  <strong>Title:</strong>
+	<% if @post.image? %>
+      <%= image_tag @post.image.url %>
+    <% else %>
+    <% end %>
+
+	
+</p>
+
+<p>
+  <strong>タイトル:</strong>
   <%= @post.title %>
 </p>
 
 <p>
-  <strong>Body:</strong>
+  <strong>内容:</strong>
   <%= @post.body %>
 </p>
 
-<% if current_user.id == @post.user.id %>
+<P>
+  <strong>興味・関心:</strong>
+  <%= @post.interest_list %>
+</P>
 
-  <%= link_to 'Edit', edit_post_path(@post) %> 
-  <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<p>
+  <strong>ニックネーム:</strong>
+        <% if @post.user.nil? %>
+          no user
+        <% else %>
+          <%= link_to @post.user.nickname, user_path(@post.user) %>
+        <% end %>
+</p>
+
+<% if @post.user.nil? %>
+	<!-- ユーザーがいなければなにも表示しない -->
+<% else %>
+
+	<% if current_user.id == @post.user.id %>
+
+	  <%= link_to '編集', edit_post_path(@post) %> 
+	  <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+	<% end %>
 <% end %>
+	  <%= link_to '戻る', posts_path %>
 
-
-
-<%= link_to 'Back', posts_path %>

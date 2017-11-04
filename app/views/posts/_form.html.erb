@@ -1,7 +1,7 @@
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(post.errors.count, "") %> 件のエラーがあります。</h2>
 
       <ul>
       <% post.errors.full_messages.each do |message| %>
@@ -11,33 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
+  <div>
+    <%= form.label :タイトル %>
+    <%= form.text_field :title, id: :post_title, size:"60x10" %>
   </div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body, id: :post_body %>
+  <div>
+    <%= form.label :内容 %>
+    <%= form.text_area :body, id: :post_body, size: "100x10" %>
   </div>
 
-  <div class="field">
-      <%= form.label :user_id %><br>
-　    ユーザーID
-      <%= form.collection_select :user_id, User.all, :id, :id %>
-  </div>
+  
 
-  <div class="field">
-      <%= form.label :image %>
+  <div>
+      <%= form.label :画像 %>
       <%= form.file_field :image %>
   </div>
 
-  <div class="field">
+  <div>
       <%= form.label :interest_list,"興味・関心（小カンマ「,」区切り）" %><br>
-      <%= text_field_tag 'post[interest_list]', @post.interest_list.join(',') %>
+      <%= text_field_tag 'post[interest_list]', @post.interest_list.join(',') , size: "100x10"%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "投稿する！" %>
   </div>
 <% end %>

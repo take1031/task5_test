@@ -1,0 +1,29 @@
+
+<!-- 画像でエラー -->
+<br>
+	<% if @user.image? %>
+		<%= image_tag @user.image.url %>
+    　<% else %>
+		<p>no image</p>
+    　<% end %>
+
+
+    <P>ニックネーム</P>
+    <h2><%= @user.nickname %></h2><br>
+    <p>所属</p>
+    <h3><%= @user.position %></h3><br>
+    <p>自己紹介</p>
+    <h3><%= @user.s_introduction %></h3><br>
+
+
+
+    <% if current_user.id == @user.id %>
+
+    <%= link_to '編集', edit_user_registration_path(current_user.id) %> 
+    
+    <% end %>
+      
+    
+    <%= link_to '戻る', posts_path %>
+
+  
