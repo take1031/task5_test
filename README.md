@@ -22,3 +22,13 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+class AddColumnToUsers < ActiveRecord::Migration[5.1]
+  def change
+    add_column :users, :image, :string
+  end
+end
+
+
+20171104125000_add_column_to_users.rb

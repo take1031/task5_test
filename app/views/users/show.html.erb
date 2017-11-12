@@ -15,15 +15,29 @@
     <p>自己紹介</p>
     <h3><%= @user.s_introduction %></h3><br>
 
+<div>
+        
+        <ul>
+            <li>
+                
+             
+            </li>
+        </ul>
+
+
+</div>
+
 
 
     <% if current_user.id == @user.id %>
 
     <%= link_to '編集', edit_user_registration_path(current_user.id) %> 
+
+    <%= link_to '投稿する', new_product_path %>
     
     <% end %>
       
     
-    <%= link_to '戻る', posts_path %>
+    <%= link_to '戻る', products_path %>
 
   

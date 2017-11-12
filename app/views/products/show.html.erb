@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+	<% if @product.image? %>
+      <%= image_tag @product.image.url %>
+    <% else %>
+    <% end %>
+
+	
+</p>
+
+<p>
+  <strong>商品名:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>値段:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>説明:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>ニックネーム:</strong>
+        <% if @product.user.nil? %>
+          no user
+        <% else %>
+          <%= link_to @product.user.nickname, user_path(@product.user) %>
+        <% end %>
+</p>
+
+<% if @product.user.nil? %>
+	<!-- ユーザーがいなければなにも表示しない -->
+<% else %>
+
+	<% if current_user.id == @product.user.id %>
+
+	  <%= link_to '編集', edit_product_path(@post) %> 
+	  <%= link_to '削除', @product, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+	<% end %>
+<% end %>
+	  <%= link_to '戻る', products_path %>
+

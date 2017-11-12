@@ -1,0 +1,57 @@
+
+<!-- 画像でエラー -->
+<br>
+	<% if @user.image? %>
+		<%= image_tag @user.image.url %>
+    　<% else %>
+		<p>no image</p>
+    　<% end %>
+
+
+    <P>ニックネーム</P>
+    <h2><%= @user.nickname %></h2><br>
+    <p>所属</p>
+    <h3><%= @user.position %></h3><br>
+    <p>自己紹介</p>
+    <h3><%= @user.s_introduction %></h3><br>
+
+<div>
+        
+        <ul>
+            <li>
+                <% if @user.product? %>
+                <%= link_to user_path(@user) do %>
+                  <div class="text">投稿数</div>
+                  <div class="num"><%= @user.products.count %></div>
+                <% else %>
+                  <P>投稿はありません</P>  
+                <% end %>
+            </li>
+        </ul>
+
+
+                <% @user.products.each do |product| %>
+                    <h4 class="user">
+                        <span>
+                            <%= link_to product.user.email, user_path(product.user) %>                
+                        </span>
+                        <span><%= product.user.email %></span>
+                    </h4>
+                        <div>
+                            <%= product.discription %>
+                        </div>
+                <% end %>
+</div>
+
+
+
+    <% if current_user.id == @user.id %>
+
+    <%= link_to '編集', edit_user_registration_path(current_user.id) %> 
+    
+    <% end %>
+      
+    
+    <%= link_to '戻る', products_path %>
+
+  
